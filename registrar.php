@@ -32,26 +32,30 @@
                 </div>
                 <div class="mb-3">
                     <label for="nomeSocialUsuario" class="form-label">Nome Social (Opcional)</label>
-                    <input type="text" name="nomeSocialUsuario" id="nomeSocialUsuario" placeholder="Fulane de Tal" class="form-control" require>
+                    <input type="text" name="nomeSocialUsuario" id="nomeSocialUsuario" placeholder="Fulane de Tal" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="dataNascUsuario" class="form-label">Data de Nascimento</label>
-                    <input type="date" name="dataNascUsuario" id="dataNascUsuario" class="form-control" require>
+                    <input type="date" name="dataNascUsuario" id="dataNascUsuario" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="cpfUsuario" class="form-label">CPF</label>
-                    <input type="text" name="cpfUsuario" id="cpfUsuario" class="form-control" placeholder="000.000.000-00" require>
+                    <input type="text" name="cpfUsuario" id="cpfUsuario" class="form-control" placeholder="000.000.000-00" required>
                 </div>
             </div>
 
             <div class="cadastroEtapa cadastroInvisivel" id="rEtapa2">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Endereço de Email</label>
-                    <input type="email" name="emailUsuario" id="emailUsuario" placeholder="usuario@exemplo.com" class="form-control">
+                    <input type="email" name="emailUsuario" id="emailUsuario" placeholder="usuario@exemplo.com" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="senhaUsuario" class="form-label">Senha</label>
-                    <input type="password" name="senhaUsuario" id="senhaUsuario" placeholder="*************" class="form-control">
+                    <input type="password" name="senhaUsuario" id="senhaUsuario" placeholder="*************" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmarSenhaUsuario" class="form-label">Senha</label>
+                    <input type="password" name="confirmarSenhaUsuario" id="confirmarSenhaUsuario" placeholder="*************" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="fotoUsuario" class="form-label">Foto de Perfil</label>
@@ -86,6 +90,9 @@
                 </div>
             </div>
 
+            <div class="cadastroEtapa cadastroInvisivel" id="rEtapa4">
+                
+            </div>
 
             <div class='btnsCadastro'>
                 <button type="button" class="btn btn-outline-success LoginCadastroBtn disabled" id="antBtn">Anterior</button>

@@ -25,14 +25,14 @@
         </div>
 
         <form method="POST" action="" class="loginCadastroForm">
-            <div class="cadastroEtapa" id="rEtapa1">
+            <div class="cadastroEtapa cadastroInvisivel" id="rEtapa1">
                 <div class="mb-3">
                     <label for="nomeUsuario" class="form-label">Nome Completo</label>
                     <input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Fulano de Tal" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="nomeSocialUsuario" class="form-label">Nome Social (Opcional)</label>
-                    <input type="text" name="nomeSocialUsuario" id="nomeSocialUsuario" placeholder="Fulane de Tal" class="form-control" required>
+                    <input type="text" name="nomeSocialUsuario" id="nomeSocialUsuario" placeholder="Fulane de Tal" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="dataNascUsuario" class="form-label">Data de Nascimento</label>
@@ -67,31 +67,52 @@
                 </div>
             </div>
 
-            <div class="cadastroEtapa cadastroInvisivel" id="rEtapa3">
+            <div class="cadastroEtapa" id="rEtapa3">
                 <div class="mb-3">
                     <label for="tipoTitulacaoUsuario" class="form-label">Tipo Titulação</label>
-                    <select class="form-select" aria-label="Graduação..." name="tipoTitulacaoUsuario">
-                        <option value="graduacao">Graduação</option>
-                        <option value="bacharelado">Bacharelado</option>
-                        <option value="licenciatura">Licenciatura</option>
-                        <option value="doutorado">Doutorado</option>
-                        <option value="mestrado">Mestrado</option>
+                    <select class="form-select" aria-label="Graduação..." name="tipoTitulacaoUsuario" id="tipoTitulacaoUsuario">
+                        <option value="Graduação">Graduação</option>
+                        <option value="Bacharelado">Bacharelado</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="Doutorado">Doutorado</option>
+                        <option value="Mestrado">Mestrado</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="titulacaoUsuario" class="form-label">Titulação</label>
-                    <input type="text" name="titulacaoUsuario" class="form-control" id="titulacaoUsuario" placeholder="Engenharia de Software">
+                    <input type="text" name="titulacaoUsuario" id="titulacaoUsuario" class="form-control" id="titulacaoUsuario" placeholder="Engenharia de Software">
                 </div>
 
-                <button type="button" class="btn btn-outline-success addTitulacao">Adicionar Titulação</button>
-
-                <div class="mb-3 titulacoes">
-
+                <div class="mb-3">
+                    <label for="instituicaoUsuario" class="form-label">Instituição</label>
+                    <input type="text" name="instituicaoUsuario" id="instituicaoUsuario" class="form-control" id="instituicaoUsuario" placeholder="IFPR - TB">
                 </div>
+
+                <div class="mb-3">
+                    <label for="anoInicioTituloUsuario" class="form-label">Ano de Ínicio</label>
+                    <input type="number" min="1900" max="2099" step="1" name="anoInicioTituloUsuario" id="anoInicioTituloUsuario" class="form-control" id="anoInicioTituloUsuario" placeholder="20XX">
+                </div>
+
+                <div class="mb-3">
+                    <label for="anoConclusaoTituloUsuario" class="form-label">Ano de Conclusão</label>
+                    <input type="number" min="1900" max="2099" step="1" name="anoConclusaoTituloUsuario" id="anoConclusaoTituloUsuario" class="form-control" id="anoConclusaoTituloUsuario" placeholder="20XX">
+                </div>
+
+                <button type="button" class="btn btn-outline-success addTitulacao" id="addTitulacao">Adicionar Titulação</button>
+
+                <ul class="mb-3 titulacoes" id="titulacoes">
+                </ul>
             </div>
 
             <div class="cadastroEtapa cadastroInvisivel" id="rEtapa4">
-                
+                <img src="" alt="" width="100px" class="usuarioIMG" id="revFoto">
+                <h3 id="revNome"></h3>
+                <h3 id="revEmail"></h3>
+                <h3 id="revSobre"></h3>
+                <h3 id="revDataNasc"></h3>
+                <h3 id="revCPF"></h3>
+                <div id="revTitulacoes"></div>
             </div>
 
             <div class='btnsCadastro'>
@@ -104,4 +125,5 @@
     </main>
 
     <script src="js/etapasCadastro.js" method="module"></script>
+    <script src="js/adicionarTitulacao.js" method="module"></script>
 </body>

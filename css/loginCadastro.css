@@ -39,7 +39,7 @@ h2 {
 }
 
 .loginCadastro {
-    width: 300px;
+    width: 500px;
     background-color: #D9D9D9;
     border-radius: 25px;
 
@@ -50,8 +50,8 @@ h2 {
     margin: 15px;
 } 
 
-input {
-    width: 280px!important;
+.loginCadastroForm {
+    width: 90%;
 }
 
 .LoginCadastroBtn {
@@ -85,10 +85,42 @@ input {
 .titulacoes {
     display: block;
     margin: 0 auto;
+    padding: 5px;
 
     border-radius: 15px;
 
     background-color: white;
-    width: 95%;
-    height: 100px;
+    min-height: 100px;
+}
+
+.titulacoes-item {
+    list-style-type: none;
+    background-color: #404c7c;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    border-radius: 15px;
+
+    padding: 15px;
+    margin: 10px;
+}
+
+.titulacoes-item h3 {
+    font-size: 1rem;
+    flex-basis: 90%;
+    margin: 0;
+}
+
+.titulacoes-item button {
+    flex-basis: 8%;
+    align-self: flex-start;
+}
+
+.titulacoes-item-instituicao{
+    flex-basis: 100%;
+    margin: 0.5rem 0;
 }

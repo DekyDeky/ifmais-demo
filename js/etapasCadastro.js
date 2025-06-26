@@ -19,29 +19,60 @@ const fimBtn = document.getElementById('fimBtn');
 
 const inputsEtapas = [inputsE1, inputsE2, inputsE3, inputsE4];
 
-let etapaAtual = 0
+let etapaAtual = 2
+
+function senhaIgual(){
+    const senha = document.getElementById('senhaUsuario').value;
+    const confirmarSenha = document.getElementById('confirmarSenhaUsuario').value;
+
+    if(senha == confirmarSenha){
+        return true
+    } else {
+        return false
+    }
+}
 
 function checarCamposVazios(){
+
     const temInputsVazios = Array.from(inputsEtapas[etapaAtual]).some( //Pega todos os inputs vazios com o atributo required
                                 input => input.hasAttribute('required') && input.value.trim() === ''
                             );
     if(temInputsVazios){
-        Array.from(inputsEtapas[etapaAtual]) //Pra cada input nesse array, adiciona a tag bootstrap "is-invalid"
-             .filter(input => input.hasAttribute('required') && input.value.trim() === '')
-             .forEach(input => {
-                 input.classList.add('is-invalid');
-             });
         return true //Retorna true que há campos inválidos
     }else {
         return false
     }
 }
 
+function invalidarCampos(filtro){
+    Array.from(inputsEtapas[etapaAtual])
+         .filter(filtro)
+         .forEach(input => {
+            input.classList.add('is-invalid')
+         })
+}
+
+function checarProblemas(){
+    if(!senhaIgual()){
+        invalidarCampos(input => input.id === 'senhaUsuario' || input.id === 'confirmarSenhaUsuario');
+        return true
+    } 
+
+    if(checarCamposVazios()){
+        invalidarCampos(input => input.hasAttribute('required') && input.value.trim() === '');
+        return true
+    }
+
+    return false
+}
 
 function mudarEtapa(){
 
     const etapas = [etapa1, etapa2, etapa3, etapa4];
-    const bolinhas = [vEtapa1, vEtapa2, vEtapa3, vEtapa4]
+    const bolinhas = [vEtapa1, vEtapa2, vEtapa3, vEtapa4];
+
+    const titulos = ['Informações Pessoais', 'Informações do Usuário', 'Titulações', 'Revisão']
+    document.getElementById('cadastro-status').innerHTML = [titulos[etapaAtual]]
 
     // Oculta todas as etapas menos a etapa atual
     etapas.forEach((el, i) => {
@@ -61,7 +92,8 @@ function mudarEtapa(){
 }
 
 proxBtn.addEventListener("click", () => { 
-    if(checarCamposVazios()){return}
+    if(checarProblemas()){return}
+
     Array.from(inputsEtapas[etapaAtual]).forEach(input => {
                                             input.classList.remove('is-invalid');
                                         });

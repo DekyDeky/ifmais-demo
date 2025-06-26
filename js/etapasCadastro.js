@@ -19,7 +19,7 @@ const fimBtn = document.getElementById('fimBtn');
 
 const inputsEtapas = [inputsE1, inputsE2, inputsE3, inputsE4];
 
-let etapaAtual = 2
+let etapaAtual = 0
 
 function senhaIgual(){
     const senha = document.getElementById('senhaUsuario').value;
@@ -71,7 +71,7 @@ function mudarEtapa(){
     const etapas = [etapa1, etapa2, etapa3, etapa4];
     const bolinhas = [vEtapa1, vEtapa2, vEtapa3, vEtapa4];
 
-    const titulos = ['Informações Pessoais', 'Informações do Usuário', 'Titulações', 'Revisão']
+    const titulos = ['Informações Pessoais', 'Informações do Usuário', 'Titulações', 'Endereço']
     document.getElementById('cadastro-status').innerHTML = [titulos[etapaAtual]]
 
     // Oculta todas as etapas menos a etapa atual
@@ -89,6 +89,10 @@ function mudarEtapa(){
     proxBtn.classList.toggle("d-none", etapaAtual === 3);
     fimBtn.classList.toggle("d-none", etapaAtual !== 3);
     
+}
+
+function criarRevisao(){
+
 }
 
 proxBtn.addEventListener("click", () => { 

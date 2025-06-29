@@ -40,15 +40,15 @@
             <div class="etapa" id="vEtapa4"></div>
         </div>
 
-        <form method="POST" action="" class="loginCadastroForm">
+        <form method="POST" action="" class="loginCadastroForm" id="formRegistro">
             <div class="cadastroEtapa" id="rEtapa1">
                 <div class="mb-3">
                     <label for="nomeUsuario" class="form-label">Nome Completo</label>
-                    <input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Fulano de Tal" class="form-control" required>
+                    <input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Fulano de Tal" class="form-control" data-apenas-letras required>
                 </div>
                 <div class="mb-3">
                     <label for="nomeSocialUsuario" class="form-label">Nome Social (Opcional)</label>
-                    <input type="text" name="nomeSocialUsuario" id="nomeSocialUsuario" placeholder="Fulane de Tal" class="form-control">
+                    <input type="text" name="nomeSocialUsuario" id="nomeSocialUsuario" placeholder="Fulane de Tal" class="form-control" data-apenas-letras>
                 </div>
                 <div class="mb-3">
                     <label for="dataNascUsuario" class="form-label">Data de Nascimento</label>
@@ -78,7 +78,7 @@
                     <input type="email" name="telefoneUsuario" id="telefoneUsuario" placeholder="(00) 00000-0000" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="fotoUsuario" class="form-label">Foto de Perfil</label>
+                    <label for="fotoUsuario" class="form-label">Foto de Perfil (Max. 5MB)</label>
                     <input class="form-control" type="file" id="fotoUsuario" name="fotoUsuario">
                 </div>
                 <div class="mb-3">
@@ -128,15 +128,15 @@
             <div class="cadastroEtapa cadastroInvisivel" id="rEtapa4">
                 <div class="mb-3">
                     <label for="cepUsuario" class="form-label">CEP</label>
-                    <input type="text" name="cepUsuario" id="cepUsuario" class="form-control" id="cepUsuario" placeholder="00000-000">
+                    <input type="text" name="cepUsuario" id="cepUsuario" class="form-control" id="cepUsuario" placeholder="00000-000" required>
                 </div>
                 <div class="mb-3">
                     <label for="estadoUsuario" class="form-label">Estado (Sigla)</label>
-                    <input type="text" name="estadoUsuario" id="estadoUsuario" class="form-control" id="estadoUsuario" placeholder="Paraná" required>
+                    <input type="text" name="estadoUsuario" id="estadoUsuario" class="form-control" id="estadoUsuario" placeholder="Paraná" data-apenas-letras required>
                 </div>
                 <div class="mb-3">
                     <label for="cidadeUsuario" class="form-label">Cidade</label>
-                    <input type="text" name="cidadeUsuario" id="cidadeUsuario" class="form-control" id="cidadeUsuario" placeholder="Telêmaco Borba" required>
+                    <input type="text" name="cidadeUsuario" id="cidadeUsuario" class="form-control" id="cidadeUsuario" placeholder="Telêmaco Borba" data-apenas-letras required>
                 </div>
                 <div class="mb-3">
                     <label for="bairroUsuario" class="form-label">Bairro</label>

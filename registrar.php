@@ -40,7 +40,7 @@
             <div class="etapa" id="vEtapa4"></div>
         </div>
 
-        <form method="POST" action="" class="loginCadastroForm" id="formRegistro">
+        <form action="app/models/adicionarUser.php" method="POST" class="loginCadastroForm" id="formRegistro" enctype="multipart/form-data">
             <div class="cadastroEtapa" id="rEtapa1">
                 <div class="mb-3">
                     <label for="nomeUsuario" class="form-label">Nome Completo</label>

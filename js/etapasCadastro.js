@@ -197,6 +197,11 @@ fimBtn.addEventListener("click", (event) => {
     if(problemaValidacao){
         event.preventDefault();
     }else {
+
+        document.querySelectorAll('.cadastroEtapa').forEach(function(etapa) {
+            etapa.classList.remove('cadastroInvisivel');
+        });
+
         document.getElementById("formRegistro").submit()
     }
 })

@@ -26,11 +26,11 @@ btnAdd.addEventListener("click", () => {
     const novoItem = document.createElement("li");
     novoItem.classList.add("titulacoes-item");
     novoItem.innerHTML = `
-        <input type="hidden" name="tipo" value="${tipo.value}">
-        <input type="hidden" name="titulo" value="${titulo.value.trim()}">
-        <input type="hidden" name="instituicao" value="${instituicao.value.trim()}">
-        <input type="hidden" name="anoInicio" value="${anoInicio.value.trim()}">
-        <input type="hidden" name="anoConclusao" value="${anoConclusao.value.trim()}">
+        <input type="hidden" name="tipo[]" value="${tipo.value}">
+        <input type="hidden" name="titulo[]" value="${titulo.value.trim()}">
+        <input type="hidden" name="instituicao[]" value="${instituicao.value.trim()}">
+        <input type="hidden" name="anoInicio[]" value="${anoInicio.value.trim()}">
+        <input type="hidden" name="anoConclusao[]" value="${anoConclusao.value.trim()}">
         <h3>${tipo.value}: ${titulo.value.trim()}</h3>
         <button type="button" class="btn btn-danger remover-titulacao" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"><i class="bi bi-x-lg"></i></button> <br>
         <span class="titulacoes-item-instituicao">${instituicao.value.trim()}</span>

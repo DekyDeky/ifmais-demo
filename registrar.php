@@ -158,7 +158,7 @@
                 <button type="submit" class="btn btn-outline-success LoginCadastroBtn d-none" id="fimBtn">Finalizar</button>
             </div>
         </form>
-        <a href="login.php" class="loginCadastroRegistrar">Já possuo uma conta!</a>
+        <a href="index.php" class="loginCadastroRegistrar">Já possuo uma conta!</a>
     </main>
 
     <script src="js/etapasCadastro.js" method="module"></script>

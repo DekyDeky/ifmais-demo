@@ -1,11 +1,28 @@
 <?php include "app/views/general/libs.php";?>
     <title>Home - IFMais</title>
+    <link rel="stylesheet" href="css/home.css">
     </head>
     <body>
+
+        <?php
+        
+            session_start();
+
+            if(!isset($_SESSION['idUsuario'])){
+                header("Location: index.php")/
+                exit;
+            }
+
+        ?>
+
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light"><img src="assets/logo.svg" alt="logo IFMais" width="75%" class="logo_ifMais"></div>
+                <div class="sidebar-heading border-bottom bg-light headerSideNav">
+                    <img src="assets/logo.svg" alt="logo IFMais" width="150px" class="logo_ifMais">
+                    <img src="<?= $_SESSION['fotoUsuario'] ?>" width="125px" alt="" class="icon_usuario">
+                    <h1 class="nome_usuario"><?= $_SESSION['nomePessoa'] ?></h1>
+                </div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> <i class="bi bi-house-door-fill"></i> Página Inicial</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="bi bi-person-fill"></i> Meu Perfil</a>
@@ -13,6 +30,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 disabled" href="#!"><i class="bi bi-gear-fill"></i> Gerenciar Oficinas</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 disabled" href="#!"><i class="bi bi-building-fill-gear"></i> Gerenciar Tarefas</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 disabled" href="#!"><i class="bi bi-calendar-week-fill"></i> Calendário do Projeto</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 text-danger" href="app/models/sairUser.php"><i class="bi bi-box-arrow-left"></i> Sair</a>
                 </div>
             </div>
             <!-- Page content wrapper-->

@@ -19,6 +19,14 @@
             <button type="submit" class="btn btn-outline-success LoginCadastroBtn">Entrar</button>
 
                 <?php
+
+                    if(isset($_GET['registro'])){
+                        $registro = $_GET['registro'];
+
+                        if($registro == 'concluido'){
+                            echo "<div class='alert alert-success text-center m-3'>Cadastro realizado com sucesso</div>";
+                        }
+                    }
     
                     if(isset($_GET['erroLogin'])){
                         $erroLogin = $_GET['erroLogin'];

@@ -17,6 +17,7 @@
             $_SESSION['idUsuario'] = $usuarioDados['idUsuario'];
             $_SESSION['emailUsuario'] = $usuarioDados['emailUsuario'];
             $_SESSION['cpfPessoa'] = $usuarioDados['cpfPessoa'];
+            $_SESSION['fotoUsuario'] = $usuarioDados['fotoUsuario'];
 
             $cpfUser = $_SESSION['cpfPessoa'];
 

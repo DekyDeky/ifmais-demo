@@ -4,7 +4,7 @@
     $user       = "root";
     $senhaBD    = "";
     $database   = "demo";
-    $porta      = 3307;
+    $porta      = 3306;
 
     $conn = mysqli_connect($host, $user, $senhaBD, $database, $porta);
 

@@ -1,8 +1,7 @@
 <?php include "../views/general/libs.php";?>
 </head>
 <body>
-    <?php
-    
+    <?php    
         //Inicia com a requesição POST
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             //Seta todos os nomes de usuário para '';
@@ -17,38 +16,31 @@
 
             //Pega todos os valores, previamente válidados
 
-            if(empty($_POST["nomeSocialUsuario"])){
-                $nomeUsuario = mysqli_real_escape_string($conn, $_POST["nomeUsuario"]);
+            if(empty($_SESSION['dados']["nomeSocialUsuario"])){
+                $nomeUsuario = mysqli_real_escape_string($conn, $_SESSION['dados']['nomeUsuario']);
             } else {
-                $nomeUsuario = mysqli_real_escape_string($conn, $_POST["nomeSocialUsuario"]);
+                $nomeUsuario = mysqli_real_escape_string($conn, $_SESSION['dados']["nomeSocialUsuario"]);
             }
             
-            $dataNasc = $_POST["dataNascUsuario"];
-            $cpfUsuario = preg_replace('/\D/', '', $_POST["cpfUsuario"]);
-            $emailUsuario = $_POST["emailUsuario"];
-            $senhaUsuario = password_hash($_POST["senhaUsuario"], PASSWORD_DEFAULT);
-            $telefoneUsuario = preg_replace('/\D/', '', $_POST["telefoneUsuario"]);
+            $dataNasc = $_SESSION['dados']["dataNascUsuario"];
+            $cpfUsuario = preg_replace('/\D/', '', $_SESSION['dados']["cpfUsuario"]);
+            $emailUsuario = $_SESSION['dados']["emailUsuario"];
+            $senhaUsuario = password_hash($_SESSION['dados']["senhaUsuario"], PASSWORD_DEFAULT);
+            $telefoneUsuario = preg_replace('/\D/', '', $_SESSION['dados']["telefoneUsuario"]);
             
             $diretorioImg = "storage/usuarios/";
-            $fotoUsuario = $diretorioImg . basename($_FILES["fotoUsuario"]["name"]);
-            $diretorioSalvar = "../../storage/usuarios/" . basename($_FILES["fotoUsuario"]["name"])
+            $fotoUsuario = $diretorioImg . basename($_SESSION['dados']['fotoUsuario_nome'] );
+//Da upload da imagem do usuário para o app
 
-            //Da upload da imagem do usuário para o app
-            if(!move_uploaded_file($_FILES['fotoUsuario']['tmp_name'], $diretorioSalvar)){
-                echo "<div class='alert alert-warning text-center'>
-                        Erro ao tentar mover a <strong>FOTO</strong> para o diretório $diretorioImg!
-                    </div>";
-                $falhaEnvio = true;
-            }
 
-            $sobreUsuario = mysqli_real_escape_string($conn, $_POST["sobreUsuario"]);
+            $sobreUsuario = mysqli_real_escape_string($conn, $_SESSION['dados']["sobreUsuario"]);
 
-            $cep = preg_replace('/\D/', '', $_POST["cepUsuario"]);
-            $estado = mysqli_real_escape_string($conn, $_POST["estadoUsuario"]);
-            $cidade = mysqli_real_escape_string($conn, $_POST["cidadeUsuario"]);
-            $bairro = mysqli_real_escape_string($conn, $_POST["bairroUsuario"]);
-            $rua = mysqli_real_escape_string($conn, $_POST["ruaUsuario"]);
-            $numeroCasa = mysqli_real_escape_string($conn, $_POST["numeroUsuario"]);
+            $cep = preg_replace('/\D/', '', $_SESSION['dados']["cepUsuario"]);
+            $estado = mysqli_real_escape_string($conn, $_SESSION['dados']["estadoUsuario"]);
+            $cidade = mysqli_real_escape_string($conn, $_SESSION['dados']["cidadeUsuario"]);
+            $bairro = mysqli_real_escape_string($conn, $_SESSION['dados']["bairroUsuario"]);
+            $rua = mysqli_real_escape_string($conn, $_SESSION['dados']["ruaUsuario"]);
+            $numeroCasa = mysqli_real_escape_string($conn, $_SESSION['dados']["numeroUsuario"]);
 
             //Insere na tabela pessoa
             $inserirPessoa = "INSERT INTO pessoa (cpfPessoa, nomePessoa, dataNasc) VALUES ('$cpfUsuario', '$nomeUsuario', '$dataNasc')";
@@ -156,6 +148,7 @@
 
     if(!$falhaEnvio){
         header('Location: ../../index.php?registro=concluido');
+        session_destroy();
     }
     
     

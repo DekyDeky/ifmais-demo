@@ -1,5 +1,8 @@
 const btnAdd = document.getElementById('addTitulacao');
 
+const etapa3 = document.getElementById("rEtapa3");
+const inputsE3 = etapa3.querySelectorAll('input');
+
 btnAdd.addEventListener("click", () => {
     const tipo = document.getElementById('tipoTitulacaoUsuario');
     const titulo = document.getElementById("titulacaoUsuario");
@@ -9,7 +12,7 @@ btnAdd.addEventListener("click", () => {
 
     const viewTitulos = document.getElementById('titulacoes');
 
-    const temInputsVazios = Array.from(inputsEtapas[etapaAtual]).some( //Pega todos os inputs vazios com o atributo required
+    const temInputsVazios = Array.from(inputsE3).some( //Pega todos os inputs vazios com o atributo required
                                 input => input.value.trim() === ''
                             );
     if(temInputsVazios){
@@ -41,7 +44,8 @@ btnAdd.addEventListener("click", () => {
 })
 
 document.querySelector(".titulacoes").addEventListener("click", (e) => {
-  if (e.target.classList.contains("remover-titulacao")) {
-    e.target.parentElement.remove();
+  const btn = e.target.closest(".remover-titulacao");
+  if (btn) {
+    btn.parentElement.remove();
   }
 });

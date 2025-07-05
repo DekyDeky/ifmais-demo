@@ -4,6 +4,14 @@
 </head>
 <body>
 
+    <?php 
+        if(!empty($_SESSION["etapaAtual"])){
+            session_start();
+            session_unset();
+            session_destroy();
+        }
+    ?>
+
     <main class="loginCadastro">
         <img src="assets/logo.svg" alt="">
         <h1>Login</h1>

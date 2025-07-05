@@ -19,8 +19,8 @@
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light headerSideNav">
-                    <img src="assets/logo.svg" alt="logo IFMais" width="150px" class="logo_ifMais">
-                    <img src="<?= $_SESSION['fotoUsuario'] ?>" width="125px" alt="" class="icon_usuario">
+                    <img src="assets/logo.svg" alt="logo IFMais" width="150px" height="150px" class="logo_ifMais">
+                    <img src="<?= $_SESSION['fotoUsuario'] ?>" alt="" class="icon_usuario">
                     <h1 class="nome_usuario"><?= $_SESSION['nomePessoa'] ?></h1>
                 </div>
                 <div class="list-group list-group-flush">
@@ -43,15 +43,49 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h1 class="mt-4">Simple Sidebar</h1>
-                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                    <p>
-                        Make sure to keep all page content within the
-                        <code>#page-content-wrapper</code>
-                        . The top navbar is optional, and just for demonstration. Just create an element with the
-                        <code>#sidebarToggle</code>
-                        ID which will toggle the menu when clicked.
-                    </p>
+                    <section class="row">
+
+                        <div class="col-8 secao-general">
+                            <h2 class="text-center">Pedidos de Auxílio</h2>
+                            <!-- Pedido Place Holder -->
+                            <div class="pedidos">
+
+                                <div class="pedido d-flex align-items-center justify-content-between p-3 rounded-4">
+                                    <img src="assets/ph_empresa.png" alt="" width="150px" height="150px" class="rounded-1">
+                                    <div class="pedido-textos flex-grow-1">
+                                        <h3 class="pedido-titulo">WebComp Ltda.</h3>
+                                        <hr>
+                                        <h4 class="mt-2">Sobre</h4>
+                                        <p>A WebComp Ltda., empresa especializada em soluções digitais e desenvolvimento de sistemas web, está em busca de um(a) desenvolvedor(a) front-end freelancer para atuar em um projeto pontual e estratégico.</p>
+                                        <ul class="pedido-tags list-unstyled d-flex justify-content-left gap-3 flex-wrap">
+                                            <li class="tag">Front-End</li>
+                                            <li class="tag">IHC</li>
+                                            <li class="tag">Comunicação</li>
+                                            <li class="tag">Lógica de Programação</li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center gap-3">
+                                            <button class="btn btn-success px-4"><i class="bi bi-check-circle"></i> Aceitar</button>
+                                            <button class="btn btn-danger px-4"><i class="bi bi-x-circle"></i> Recusar</button>
+                                            <button class="btn btn-info text-light px-4"><i class="bi bi-search"></i> Ver mais</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="col section-general">
+                            <h2 class="text-center">Avisos</h2>
+                            <div class="avisos">
+                                <div class="aviso p-3 rounded-4">
+                                    <h4 class="text-center text-danger">MANUTENÇÃO NO SISTEMA</h4>
+                                    <pre style="white-space:pre-wrap;">Informamos que o sistema da WebComp Ltda. passará por uma manutenção programada no dia <strong>06/07/2025</strong>, das <strong>22h às 02h</strong>. Durante esse período, os serviços poderão ficar temporariamente indisponíveis.
+Agradecemos pela compreensão e estamos trabalhando para melhorar continuamente nossa plataforma.</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
                 </div>
             </div>
         </div>

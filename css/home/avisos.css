@@ -1,0 +1,7 @@
+.avisos-admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 15px;
+    margin-bottom: 15px;
+}

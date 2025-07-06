@@ -1,3 +1,9 @@
+@import url(home/avisos.css);
+
+.conteudo-main {
+    margin-top: 15px;
+}
+
 .icon_usuario {
     display: block;
     background-color: white;

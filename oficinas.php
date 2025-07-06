@@ -47,21 +47,7 @@
                             <h2 class="text-center">Minhas Oficinas</h2>
                             <div class="oficinas-usuario">
 
-                                <div class="fundo-grid oficina d-flex align-items-center justify-content-between p-3 rounded-4">
-                                    <img src="assets/excel.png" alt="" width="150px" height="150px" class="rounded-1">
-                                    <div class="grid-textos oficina-textos flex-grow-1">
-                                        <h3 class="oficina-titulo">Oficina: Excel Descomplicado</h3>
-                                        <hr>
-                                        <h4 class="mt-2">Sobre</h4>
-                                        <p>Participe da nossa oficina "Excel Descomplicado" e aprenda, de forma prática e sem complicação, a usar o Excel como um verdadeiro profissional. Desenvolva habilidades essenciais para o dia a dia e otimize suas tarefas. Garanta já sua vaga e descomplique o Excel!</p>
-                                        <p><strong>Professor(es):</strong> Henata Goiaba, Ricardo Hideki</p>
-                                        <div class="d-flex justify-content-end gap-3">
-                                            <button class="btn btn-success px-4 disabled"><i class="bi bi-person-lines-fill"></i> Lista de Presença</button>
-                                            <button class="btn btn-warning px-4"><i class="bi bi-pencil-fill"></i> Editar</button>
-                                            <button type='submit' class='btn btn-danger'><i class='bi bi-trash-fill'></i> Apagar</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php include 'app/controllers/mostrarUserOficinas.php' ?>
 
                             </div>
 
@@ -73,19 +59,7 @@
 
                             <div class="oficinas-participar">
 
-                                <div class="fundo-grid oficina d-flex align-items-center justify-content-between p-3 rounded-4">
-                                    <img src="assets/excel.png" alt="" width="150px" height="150px" class="rounded-1">
-                                    <div class="grid-textos oficina-textos flex-grow-1">
-                                        <h3 class="oficina-titulo">Oficina: Excel Descomplicado</h3>
-                                        <hr>
-                                        <h4 class="mt-2">Sobre</h4>
-                                        <p>Participe da nossa oficina "Excel Descomplicado" e aprenda, de forma prática e sem complicação, a usar o Excel como um verdadeiro profissional. Desenvolva habilidades essenciais para o dia a dia e otimize suas tarefas. Garanta já sua vaga e descomplique o Excel!</p>
-                                        <p><strong>Professor(es):</strong> Henata Goiaba, Ricardo Hideki</p>
-                                        <div class="d-flex justify-content-end gap-3">
-                                                <a class="btn btn-info text-light px-4 disabled" href="#"><i class="bi bi-search"></i> Ver mais</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php include 'app/controllers/mostrarPartOficinas.php'; ?>
 
                             </div>
                         </section>

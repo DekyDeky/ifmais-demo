@@ -16,6 +16,8 @@
         $nomeUsuarioAtual = $_SESSION['nomePessoa'];
         $cpfUsuarioAtual = $_SESSION['cpfPessoa'];
 
+        include 'app/models/oficinas/editarOficina.php'
+
     ?>
 
         <div class="d-flex" id="wrapper">
@@ -45,26 +47,29 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid conteudo-main">
-                    <h2 class="text-center mt-4">Criar Oficina</h2>
-                    <form method="POST" action="app/controllers/criarOficina.php" class="form-oficina" enctype="multipart/form-data">
+                    <h2 class="text-center mt-4">Editar Oficina</h2>
+                    <form method="POST" action="app/controllers/editarOficina.php" class="form-oficina" enctype="multipart/form-data">
+                        <input type="hidden" name="idOficina" value="<?= $idOficinaAtualizar ?>">
+                        <input type="hidden" name="fotoOriginalOficina" value="<?= $oficinaDado['fotoOficina'] ?>">
                         <div class="mb-3">
                             <label for="tituloOficina" class="form-label">Título da Oficina</label>
-                            <input type="text" name="tituloOficina" id="tituloOficina" placeholder="Oficina: Excel Descomplicado" class="form-control" value="<?= htmlspecialchars($_SESSION['dadosOficina']['tituloOficina'] ?? '') ?>">
+                            <input type="text" name="tituloOficina" id="tituloOficina" placeholder="Oficina: Excel Descomplicado" class="form-control" value="<?= htmlspecialchars($oficinaDado['tituloOficina'] ?? '') ?>">
                         </div>
                         <div class="mb-3">
                             <label for="sobreOficina" class="form-label">Sobre a Oficina</label>
-                            <textarea type="text" name="sobreOficina" id="sobreOficina" placeholder="Participe da nossa oficina 'Excel Descomplicado'..." class="form-control" style="height: 100px;"><?= htmlspecialchars($_SESSION['dadosOficina']['sobreOficina'] ?? '') ?></textarea>
+                            <textarea type="text" name="sobreOficina" id="sobreOficina" placeholder="Participe da nossa oficina 'Excel Descomplicado'..." class="form-control" style="height: 100px;"><?= htmlspecialchars($oficinaDado['descricaoOficina']) ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="dataOficina" class="form-label">Selecione a Data </label>
-                            <input type="date" name="dataOficina" id="dataOficina" class="form-control" value="<?= htmlspecialchars($_SESSION['dadosOficina']['dataOficina'] ?? '') ?>">
+                            <input type="date" name="dataOficina" id="dataOficina" class="form-control" value="<?= $oficinaDado['dataOficina'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="horaOficina" class="form-label">Selecione a Hora </label>
-                            <input type="time" name="horaOficina" id="horaOficina" class="form-control" value="<?= htmlspecialchars($_SESSION['dadosOficina']['horaOficina'] ?? '') ?>">
+                            <input type="time" name="horaOficina" id="horaOficina" class="form-control" value="<?= $oficinaDado['horaOficina'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="fotoOficina" class="form-label">Selecione a Hora </label>
+                            <img src="<?= $oficinaDado['fotoOficina'] ?>" alt="" width="150px" style="display: block; margin: auto;"> <br>
+                            <label for="fotoOficina" class="form-label">Selecione uma foto </label>
                             <input type="file" name="fotoOficina" id="fotoOficina" class="form-control">
                         </div>
                         <div class="mb-3 add-professores">
@@ -90,9 +95,45 @@
 
                                     <button class="btn btn-outline-danger disabled"><i class="bi bi-trash-fill"></i></button>
                                 </li>
+
+                                <?php
+                                
+                                    foreach ($cpfsProfsAtual as $cpf) {
+
+                                        $pegarProfSQL = "SELECT nomePessoa FROM pessoa WHERE cpfPessoa = '$cpf'";
+
+                                        include 'config/database.php';
+
+                                        $profNomesConsult = mysqli_query($conn, $pegarProfSQL);
+
+                                        if(!$profNomesConsult) echo'Falha ao carregar professores!';
+
+                                        $profNomes = mysqli_fetch_assoc($profNomesConsult);
+
+                                        $profNome = $profNomes['nomePessoa'];
+
+                                        if($cpf != $_SESSION['cpfPessoa']){
+
+                                            echo "
+                                                <li class='add-professores-view'>
+                                                    <input type='hidden' name='cpfProfs[]' value='$cpf' class='cpfProfs'>
+
+                                                    <h4>
+                                                        $profNome
+                                                    </h4>
+
+                                                    <button type='button' class='btn btn-outline-danger remover-prof'><i class='bi bi-trash-fill'></i></button>
+                                                </li>
+                                            ";
+
+                                        }
+                                        
+                                    }
+                                
+                                ?>
                             </ul>
                         </div>
-                        <button type="submit" class="btn btn-success btn-criarOficina"><i class="bi bi-patch-check-fill"></i> Criar Oficina</button>
+                        <button type="submit" class="btn btn-success btn-criarOficina"><i class="bi bi-patch-check-fill"></i> Editar Oficina</button>
                     </form>
                 </div>
             </div>
@@ -107,23 +148,28 @@
 
         <script>
 
-            <?php
-                if (!empty($_SESSION['errosOficina'])) {
-                    foreach ($_SESSION['errosOficina'] as $campo => $problema) {
+            document.addEventListener("DOMContentLoaded", function () {                          
 
-                        echo 'console.log("' . addslashes($campo) . ' => ' . addslashes($problema) . '");';
+                <?php
 
-                        echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
-                             
+                    if (isset($_SESSION['errosOficina'])) {
 
-                    }
+                        foreach ($_SESSION['errosOficina'] as $campo => $problema) {
 
-                    unset($_SESSION['errosOficina']);
-                }   
+                            echo 'console.log("' . addslashes($campo) . ' => ' . addslashes($problema) . '");';
 
-                unset($_SESSION['dadosOficina'])
-            
-            ?>
+                            echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
+                                
+                        }
+
+                        unset($_SESSION['errosOficina']);
+                    }   
+
+                    unset($_SESSION['dadosOficina'])
+                
+                ?>
+
+            });
 
         </script>
 

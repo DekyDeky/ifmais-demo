@@ -76,7 +76,7 @@
                     <main class="main-contents">
                         <section class="row main-content">
 
-                            <div class="col-8 secao-general">
+                            <div class="col secao-general">
                                 <h2 class="text-center">Pedidos de Auxílio</h2>
                                 <!-- Pedido Place Holder -->
                                 <div class="pedidos">
@@ -95,9 +95,9 @@
                                                 <li class="tag">Lógica de Programação</li>
                                             </ul>
                                             <div class="d-flex justify-content-end gap-3">
-                                                <button class="btn btn-success px-4"><i class="bi bi-check-circle"></i> Aceitar</button>
-                                                <button class="btn btn-danger px-4"><i class="bi bi-x-circle"></i> Recusar</button>
-                                                <button class="btn btn-info text-light px-4"><i class="bi bi-search"></i> Ver mais</button>
+                                                <button class="btn btn-success px-4 disabled"><i class="bi bi-check-circle"></i> Aceitar</button>
+                                                <button class="btn btn-danger px-4 disabled"><i class="bi bi-x-circle"></i> Recusar</button>
+                                                <button class="btn btn-info text-light px-4 disabled"><i class="bi bi-search"></i> Ver mais</button>
                                             </div>
                                         </div>
                                     </div>
@@ -108,24 +108,12 @@
                         </section>
 
                         <section class="row main-content mt-4">
-                            <div class="col-8 secao-general">
+                            <div class="col secao-general">
                                 <h2 class="text-center">Oficinas</h2>
 
                                 <div class="oficinas">
 
-                                    <div class="fundo-grid oficina d-flex align-items-center justify-content-between p-3 rounded-4">
-                                        <img src="assets/excel.png" alt="" width="150px" height="150px" class="rounded-1">
-                                        <div class="grid-textos oficina-textos flex-grow-1">
-                                            <h3 class="oficina-titulo">Oficina: Excel Descomplicado</h3>
-                                            <hr>
-                                            <h4 class="mt-2">Sobre</h4>
-                                            <p>Participe da nossa oficina "Excel Descomplicado" e aprenda, de forma prática e sem complicação, a usar o Excel como um verdadeiro profissional. Desenvolva habilidades essenciais para o dia a dia e otimize suas tarefas. Garanta já sua vaga e descomplique o Excel!</p>
-                                            <p><strong>Professor(es):</strong> Henata Goiaba, Ricardo Hideki</p>
-                                            <div class="d-flex justify-content-end gap-3">
-                                                <a class="btn btn-info text-light px-4 disabled" href="#"><i class="bi bi-search"></i> Ver mais</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php include 'app/controllers/mostrarTodasOficinas.php' ?>
 
                                 </div>
                             </div>

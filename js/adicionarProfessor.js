@@ -33,6 +33,8 @@ addProf.addEventListener("click", () => {
 })
 
 listaProfs.addEventListener("click", (e) => {
+    console.log("Ciclando");
+
   const btn = e.target.closest(".remover-prof");
   if (btn) {
     const item = btn.closest(".add-professores-view");

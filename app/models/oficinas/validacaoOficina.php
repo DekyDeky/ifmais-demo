@@ -8,9 +8,4 @@
         }
     }
 
-    if(!empty($errosOficina)){
-        $_SESSION['errosOficina'] = [];
-        $_SESSION['errosOficina'] = $errosOficina;
-    }
-
 ?>

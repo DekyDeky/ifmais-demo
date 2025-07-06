@@ -14,12 +14,34 @@
             }
 
             if(isset($_GET['formAviso'])){
-                echo "
-                <div class='alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3' role='alert' id='alertaFlutuante'>
-                    Cadastro realizado com sucesso!
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>
-                ";                
+                $formAviso = $_GET['formAviso'];
+
+                if($formAviso == 'concluido'){
+                    echo "
+                        <div class='alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3' role='alert' id='alertaFlutuante'>
+                            Cadastro realizado com sucesso!
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                    ";                
+                }
+
+                if($formAviso == 'deletado'){
+                    echo "
+                        <div class='alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3' role='alert' id='alertaFlutuante'>
+                            Aviso deletado com sucesso!
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                    ";        
+                }
+
+                if($formAviso == "editou"){
+                    echo "
+                        <div class='alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3' role='alert' id='alertaFlutuante'>
+                            Aviso editado com sucesso!
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                    ";
+                }
             }
 
         ?>
@@ -35,7 +57,6 @@
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> <i class="bi bi-house-door-fill"></i> Página Inicial</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="bi bi-person-fill"></i> Meu Perfil</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="gerenAvisos.php"><i class="bi bi-megaphone-fill"></i> Gerenciar Avisos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 disabled" href="#!"><i class="bi bi-gear-fill"></i> Gerenciar Oficinas</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 disabled" href="#!"><i class="bi bi-building-fill-gear"></i> Gerenciar Tarefas</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 disabled" href="#!"><i class="bi bi-calendar-week-fill"></i> Calendário do Projeto</a>
@@ -87,10 +108,10 @@
                             <div class="avisos-admin">
                                 <button class="aviso-add btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#adicionarAviso"><i class="bi bi-plus-lg"></i></button>
                                 <h2 class="text-center">Avisos</h2>
-                                <button class="aviso-config btn btn-outline-info"><i class="bi bi-gear-fill"></i></button>
+                                <button class="aviso-config btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modalGerenciarAviso"><i class="bi bi-gear-fill"></i></button>
                             </div>
                             <div class="avisos">
-                                <?php include ('app/models/listarAvisos.php'); ?>
+                                <?php include ('app/models/avisos/listarAvisos.php'); ?>
                             </div>
                         </div>
 
@@ -99,39 +120,14 @@
             </div>
         </div>
 
-        <div class="modal fade" id="adicionarAviso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Aviso</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="app/controllers/cadastroAviso.php">
-                        <div class="mb-3">
-                            <label for="tituloAviso" class="form-label">Título Aviso</label>
-                            <input type="text" name="tituloAviso" id="tituloAviso" placeholder="Manutenção do Sistema" class="form-control" name="tituloAviso" value="<?= htmlspecialchars($_SESSION['dadosAviso']['tituloAviso'] ?? '') ?>">
-                        </div>
+        <!-- Modal para criar aviso -->
+        <?php include 'app/views/homePage/modalAddAviso.php'; ?>
 
-                        <div class="mb-3">
-                            <label for="textoAviso" class="form-label">Texto do Aviso</label>
-                            <textarea class="form-control" placeholder="Informamos que o sistema..." id="textoAviso" name="textoAviso" style="height: 100px;" value="<?= htmlspecialchars($_SESSION['dadosAviso']['textoAviso'] ?? '') ?>"></textarea>
-                        </div>
+        <!-- Modal para gerenciar Aviso -->
+        <?php include 'app/views/homePage/modalGerenAviso.php';?>
 
-                        <div class="mb-3">
-                            <label for="validadeAviso" class="form-label">Validade do Aviso</label>
-                            <input type="datetime-local" name="validadeAviso" id="validadeAviso" placeholder="Manutenção do Sistema" class="form-control" name="validadeAviso" value="<?= htmlspecialchars($_SESSION['dadosAviso']['validadeAviso'] ?? '') ?>">
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Criar Aviso</button>
-                        </div>
-                    </form>
-                </div>
-                </div>
-            </div>
-        </div>
+        <!-- Modal para editar um Aviso -->
+        <?php include 'app/views/homePage/modalEditarAviso.php'; ?>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -140,24 +136,54 @@
         <script>
 
             <?php
-            
+          
                 if(isset($_SESSION['errosAviso'])){
 
-                    echo "
+                    if($_SESSION['errosAvisoTipo'] == 'addAviso'){
+
+                        echo "
                             document.addEventListener('DOMContentLoaded', function() {
                             var meuModal = new bootstrap.Modal(document.getElementById('adicionarAviso'));
                             meuModal.show();
                             });
-                    ";
+                        ";
+                            
+                        foreach($_SESSION['errosAviso'] as $campo){
+                            echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
+                        }
+                    }
 
-                    foreach($_SESSION['errosAviso'] as $campo){
-                        echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
+                    if($_SESSION['errosAvisoTipo'] == 'editAviso'){
+                        echo "
+                            document.addEventListener('DOMContentLoaded', function() {
+                            var meuModal = new bootstrap.Modal(document.getElementById('modalEditarAviso'));
+                            meuModal.show();
+                            });
+                        ";
+                            
+                        foreach($_SESSION['errosAviso'] as $campo){
+                            echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
+                        }
                     }
 
                     unset($_SESSION['errosAviso']);
+                    unset($_SESSION['errosAvisoTipo']);
                     
                 }
 
+                if(isset($_GET['formAviso'])){
+                    if($formAviso == 'deletado'){
+                        echo "
+                            document.addEventListener('DOMContentLoaded', function() {
+                            var meuModal = new bootstrap.Modal(document.getElementById('gerenciarAviso'));
+                            meuModal.show();
+                            });
+                        ";        
+                    }
+                }
+
+                
+                
             ?>
 
         </script>

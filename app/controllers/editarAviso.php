@@ -4,17 +4,21 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        $campos = ['tituloAviso', 'textoAviso', 'validadeAviso'];
+        $campos = ['editarTituloAviso', 'editarTextoAviso', 'editarValidadeAviso'];
         include '../models/avisos/validacoesAvisos.php';
 
         if(isset($_SESSION['errosAviso'])){
-            $_SESSION['errosAvisoTipo'] = "addAviso";
+            $_SESSION['errosAvisoTipo'] = "editAviso";
             header('location: ../../home.php');
+        }else {
+            echo "sem erros";
         }
 
         $_SESSION['dadosAviso'] = $_POST;
 
-        include '../models/avisos/adicionarAviso.php';
+        include '../models/avisos/atualizarAviso.php';
+
+
     }
 
 ?>

@@ -9,3 +9,24 @@
 .aviso {
     margin: 10px 0;
 }
+
+/* Modal Gerenciar Avisos */
+.geren-aviso {
+    background-color: rgba(211, 211, 211, 0.5);
+    border-radius: 15px;
+    padding: 10px;
+
+    margin-bottom: 15px;
+}
+
+.geren-aviso-info pre {
+    overflow: hidden;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+}
+
+.geren-aviso-btn {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}

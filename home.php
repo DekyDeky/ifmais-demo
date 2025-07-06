@@ -90,16 +90,7 @@
                                 <button class="aviso-config btn btn-outline-info"><i class="bi bi-gear-fill"></i></button>
                             </div>
                             <div class="avisos">
-                                <?php
-                                
-                                    
-                                
-                                ?>
-                                <div class="aviso p-3 rounded-4">
-                                    <h4 class="text-center text-danger">MANUTENÇÃO NO SISTEMA</h4>
-                                    <pre style="white-space:pre-wrap;">Informamos que o sistema da WebComp Ltda. passará por uma manutenção programada no dia <strong>06/07/2025</strong>, das <strong>22h às 02h</strong>. Durante esse período, os serviços poderão ficar temporariamente indisponíveis.
-Agradecemos pela compreensão e estamos trabalhando para melhorar continuamente nossa plataforma.</pre>
-                                </div>
+                                <?php include ('app/models/listarAvisos.php'); ?>
                             </div>
                         </div>
 

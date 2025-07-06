@@ -1,0 +1,40 @@
+.icon_usuario {
+    display: block;
+    background-color: white;
+    border-radius: 50%;
+    margin: 20px auto;
+
+    width: 125px;
+    height: 125px;
+}
+
+.nome_usuario {
+    font-size: 25px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.secao-general {
+    width: 100%;
+}
+
+.fundo-grid {
+    background-color: rgba(211, 211, 211, 0.5);
+}
+
+hr {
+    margin: 0;
+}
+
+.grid-textos {
+    margin-left: 15px;
+}
+
+.tag {
+    background-color: #106cfc;
+    color: white;
+    
+    padding: 5px 10px;
+    border-radius: 5px;
+}

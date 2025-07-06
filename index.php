@@ -5,6 +5,7 @@
 <body>
 
     <?php 
+
         if(!empty($_SESSION["etapaAtual"])){
             session_start();
             session_unset();

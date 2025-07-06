@@ -87,7 +87,7 @@
     <script>
 
         <?php
-        
+            //Planejei colocar mensagens para cada tipo de erro, mas não descobri como fazer isso
             if (!empty($_SESSION['erros'])) {
                 foreach ($_SESSION['erros'] as $campo => $problema) {
 
@@ -106,11 +106,7 @@
                             echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
                             break;
                     }
-/*
-                    if ($problema === 'obrigatorio') {
-                        echo 'document.getElementById("' . addslashes($campo) . '").classList.add("is-invalid");';
-                        //echo 'console.log("' . addslashes($campo) . '");';
-                    }*/
+
 
                 }
 

@@ -3,6 +3,7 @@
                 <label for="tipoTitulacaoUsuario" class="form-label">Tipo Titulação</label>
                 <select class="form-select" aria-label="Graduação..." name="tipoTitulacaoUsuario" id="tipoTitulacaoUsuario">
                     <option value="Graduação">Graduação</option>
+                    <option value="Pós-Graduação">Pós-Graduação</option>
                     <option value="Bacharelado">Bacharelado</option>
                     <option value="Licenciatura">Licenciatura</option>
                     <option value="Doutorado">Doutorado</option>

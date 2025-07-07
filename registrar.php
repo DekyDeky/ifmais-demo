@@ -29,14 +29,7 @@
     <main class="loginCadastro">
         <img src="assets/logo.svg" alt="">
         <h1>Registrar</h1>
-        <h2 id="cadastro-status">Informações Pessoais</h2>
-
-        <div class="cadastroEtapaView">
-            <div class="etapa etapaAtual" id="vEtapa1"></div>
-            <div class="etapa" id="vEtapa2"></div>
-            <div class="etapa" id="vEtapa3"></div>
-            <div class="etapa" id="vEtapa4"></div>
-        </div>
+        <h2 id="cadastro-status">Cadastro de Usuário</h2>
 
         <?php
         
